@@ -1,4 +1,5 @@
 clear all
+%% debo hacer cambios
 clc
 %% ver cambio
 x=2:0.2:4;
