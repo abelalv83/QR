@@ -1,4 +1,5 @@
 clear all
+%% todo perfecto
 %% debo hacer cambios
 clc
 %% ver cambio
