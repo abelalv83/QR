@@ -6,18 +6,28 @@ A=sparse(n,n);
 for k=1:length(x)
     A(k,:)=x.^k;
 end
-% %speye(A)
+spy(A)
 
 save('A.mat','A')
 save('b.mat','b')
 x=inv(A)*b; % no es posible
 res=norm(A*x-b);
 sprintf("residuo sin QR %e",res)
+%%%%%%%%%%%%%%%%%
+[q,r]=granQR2_m(A)
+x=inv(r)*q'*b;
+res=norm(r*x-q'*b);
+sprintf("residuo  con QR modificado %e",res)
+
+[q,r]=granQR2(A);
+x=inv(r)*q'*b;
+res=norm(r*x-q'*b);
+sprintf("residuo  con QR clasico %e",res)
 
 [q,r]=qr(A);
 x=inv(r)*q'*b;
 res=norm(r*x-q'*b);
-sprintf("residuo  con QR %e",res)
+sprintf("residuo  con QR matlab %e",res)
 
 %%%%%%%%%%%%%%
 %%minimos cuadrados
