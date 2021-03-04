@@ -1,5 +1,5 @@
 clear all
-x=0:0.1:1;
+x=2:0.2:4;
 n=length(x);
 b=ones(n,1);
 A=sparse(n,n);
@@ -11,10 +11,13 @@ end
 save('A.mat','A')
 save('b.mat','b')
 x=inv(A)*b; % no es posible
-norm(A*x-b)
+res=norm(A*x-b);
+sprintf("residuo sin QR %e",res)
+
 [q,r]=qr(A);
 x=inv(r)*q'*b;
-norm(r*x-q'*b)
+res=norm(r*x-q'*b);
+sprintf("residuo  con QR %e",res)
 
 %%%%%%%%%%%%%%
 %%minimos cuadrados
