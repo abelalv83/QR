@@ -7,17 +7,12 @@ for k=1:length(x)
     A(k,:)=x.^k;
 end
 spy(A)
-sprintf('la condición de A es %e', cond(A))
+spr cond(A)
 save('A.mat','A')
 save('b.mat','b')
 x=inv(A)*b; % no es posible
 res=norm(A*x-b);
-sprintf("residuo calculando la inversa %e",res)
-
-%%  
-x=A\b; % no es posible
-res=norm(A*x-b);
-sprintf("residuo calculando A x %e",res)
+sprintf("residuo sin QR %e",res)
 %%%% factorizacion LU
 [P,L,U]=lu(A);
 c=L\(P*b);
@@ -36,7 +31,7 @@ x=r\(q'*b);
 res=norm(A*x-b);
 sprintf("residuo  con QR modificado %e",res)
 %%%%%%%%%%%%%%%%% qr matlab
-[q,r]=qr(A,0);
+[q,r]=qr(A);
 x=r\(q'*b);
 res=norm(A*x-b);
 sprintf("residuo  con QR matlab %e",res)

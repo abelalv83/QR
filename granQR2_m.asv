@@ -1,0 +1,19 @@
+function [q,r]=granQR2_m(a)
+%% gram schmidt modificado pagian 21  sauver
+[n,m]=size(a);
+q=zeros(n,m);
+r=zeros(m,m);
+%r(1,1)=norm(a(:,1));
+%q(:,1)=a(:,1)/norm(a(:,1));
+for k=1:m
+   y=a(:,k);
+   for j=1:k-1
+       r(j,k)=dot(a(:,k),y);
+       y=y-r(j,k)*q(:,j);
+   end
+   %temp=temp-q(:,1:k-1)*r(1:k-1,k);
+   r(k,k)=norm(y);
+   q(:,k)=y/r(k,k);
+end
+
+end
