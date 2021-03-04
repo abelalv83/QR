@@ -1,4 +1,6 @@
 clear all
+clc
+%% ver cambio
 x=2:0.2:4;
 n=length(x);
 b=ones(n,1);
@@ -47,6 +49,8 @@ x=0:0.1:10;
 y=3*x+3;
 yn=3*x+3+randn(1,length(x));
 plot(x,y,x,yn,'o')
+
+
 
 %% Ecuaciones normales
 
